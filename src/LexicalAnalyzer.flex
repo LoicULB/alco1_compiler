@@ -1,13 +1,12 @@
-package src;
 %% //Options of the scanner
 
 %class LexicalAnalyzer //Name
 %unicode
 %line  //Use line counter (yyline variable)
 %column // Use column counter (yycolumn variable)
-%standalone //JFlex do not need a parser
+%standalone //JFlex does not need a parser
 %type Symbol 
-
+%public
 %xstate YYINITIAL, DECIMAL_SN, C99_VAR, REL_OPE, CONDITION_STATEMENT
 %{ //start the java code
     
@@ -37,25 +36,44 @@ BigCom = "CO"~"CO"
 SmallCom = "co".*
 
 %% //identification of tokens
+    "begin" {System.out.println("BEGIN: "+ yytext()); return new Symbol(LexicalUnit.BEG, yyline, yycolumn,yytext());}
+    "end" {System.out.println("END: "+ yytext()); return new Symbol(LexicalUnit.END, yyline, yycolumn,yytext());}
 
-    {VarName} //todo
-    {Number} //todo
-    {BigCom} //todo
-    {SmallCom} //todo
-    "begin" //todo
-    "end" //todo
+    ";" {System.out.println("SEMICOLON: "+ yytext()); return new Symbol(LexicalUnit.SEMICOLON, yyline, yycolumn);}
+    ":=" {System.out.println("ASSIGN: "+ yytext()); return new Symbol(LexicalUnit.ASSIGN, yyline, yycolumn,yytext());}
 
-    ";" //todo
-    ":=" //todo
-
-    "(" //todo
-    ")" //todo
+    "(" {
+          Symbol retSymbol = new Symbol(LexicalUnit.LPAREN,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    ")" {
+          Symbol retSymbol = new Symbol(LexicalUnit.RPAREN,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
 
     //Arithmetic Operators
-    "-" //todo
-    "+" //todo
-    "*" //todo
-    "/" //todo
+    "-" {
+          Symbol retSymbol = new Symbol(LexicalUnit.MINUS,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "+" {
+          Symbol retSymbol = new Symbol(LexicalUnit.PLUS,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "*" {
+          Symbol retSymbol = new Symbol(LexicalUnit.TIMES,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "/" {
+          Symbol retSymbol = new Symbol(LexicalUnit.DIVIDE,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
 
     
     //If
@@ -71,19 +89,63 @@ SmallCom = "co".*
     "<" {System.out.println("SMALLER: "+ yytext()); return new Symbol(LexicalUnit.SMALLER, yyline, yycolumn);}
 
     //While
-    "while" //todo
-    "do" //todo
-    "endwhile" //todo
+    "while" {
+          Symbol retSymbol = new Symbol(LexicalUnit.WHILE,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "do" {
+          Symbol retSymbol = new Symbol(LexicalUnit.DO,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "endwhile" {
+          Symbol retSymbol = new Symbol(LexicalUnit.ENDWHILE,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
 
     //For
-    "for"  //todo
-    "from" //todo
-    "by" //todo
-    "to" //todo
-    "endfor"
+    "for"  {
+          Symbol retSymbol = new Symbol(LexicalUnit.FOR,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "from" {
+          Symbol retSymbol = new Symbol(LexicalUnit.FROM,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "by" {
+          Symbol retSymbol = new Symbol(LexicalUnit.BY,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "to" {
+          Symbol retSymbol = new Symbol(LexicalUnit.TO,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "endfor" {
+          Symbol retSymbol = new Symbol(LexicalUnit.ENDFOR,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
 
     //IO
-    "print" //todo
-    "read" //todo
+    "print" {
+          Symbol retSymbol = new Symbol(LexicalUnit.PRINT,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+    "read" {
+          Symbol retSymbol = new Symbol(LexicalUnit.READ,yyline,yycolumn,yytext());
+          System.out.println(retSymbol);
+          return retSymbol;
+      }
+   {VarName} {System.out.println("VARNAME: "+ yytext()); return new Symbol(LexicalUnit.VARNAME, yyline, yycolumn,yytext());}
+   {Number} {System.out.println("NUMBER: "+ yytext()); return new Symbol(LexicalUnit.NUMBER, yyline, yycolumn,yytext());}
 
-    . {}
+   {BigCom} {}
+   {SmallCom} {}
+   . {}
