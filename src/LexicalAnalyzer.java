@@ -34,12 +34,12 @@ public class LexicalAnalyzer {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\12\0\1\7\1\7\1\7\1\7\23\0\1\34\6\0\1\21\1\22"+
-    "\1\25\1\24\1\0\1\23\1\0\1\26\12\1\1\17\1\16\1\36"+
-    "\1\20\1\35\2\0\2\2\1\3\13\2\1\4\13\2\6\0\1\44"+
-    "\1\10\1\5\1\15\1\11\1\27\1\12\1\31\1\13\2\2\1\32"+
-    "\1\41\1\14\1\6\1\43\1\2\1\40\1\33\1\30\2\2\1\37"+
-    "\1\2\1\42\1\2\12\0\1\7\u1fa2\0\1\7\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\12\0\1\7\1\7\1\7\1\7\32\0\1\21\1\22\1\25\1\24"+
+    "\1\0\1\23\1\0\1\26\12\1\1\17\1\16\1\35\1\20\1\34"+
+    "\2\0\2\2\1\3\13\2\1\4\13\2\6\0\1\43\1\10\1\5"+
+    "\1\15\1\11\1\27\1\12\1\31\1\13\2\2\1\32\1\40\1\14"+
+    "\1\6\1\42\1\2\1\37\1\33\1\30\2\2\1\36\1\2\1\41"+
+    "\1\2\12\0\1\7\u1fa2\0\1\7\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -52,16 +52,16 @@ public class LexicalAnalyzer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\1\1\1\2\3\3\1\4\4\3\1\5\1\1"+
+    "\2\0\1\1\1\2\3\3\1\4\5\3\1\5\1\1"+
     "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\2\3"+
-    "\1\15\1\16\1\17\6\3\1\20\2\3\1\21\1\22"+
-    "\1\23\2\3\1\24\4\3\1\0\1\3\1\1\1\3"+
-    "\1\25\1\3\1\26\5\3\1\0\4\3\1\27\1\30"+
-    "\1\31\1\3\1\32\1\3\1\33\1\34\2\3\1\35"+
-    "\1\36\1\37\2\3\1\40";
+    "\1\15\1\16\6\3\1\17\2\3\1\20\1\3\1\21"+
+    "\1\22\2\3\1\23\4\3\1\0\1\3\1\1\1\3"+
+    "\1\24\1\3\1\25\1\26\5\3\1\0\4\3\1\27"+
+    "\1\30\1\31\1\3\1\32\1\3\1\33\1\34\2\3"+
+    "\1\35\1\36\1\37\2\3\1\40";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[78];
+    int [] result = new int[80];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -86,19 +86,19 @@ public class LexicalAnalyzer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\45\0\112\0\157\0\224\0\271\0\336\0\112"+
-    "\0\u0103\0\u0128\0\u014d\0\u0172\0\112\0\u0197\0\112\0\112"+
-    "\0\112\0\112\0\112\0\112\0\112\0\u01bc\0\u01e1\0\112"+
-    "\0\112\0\112\0\u0206\0\u022b\0\u0250\0\u0275\0\u029a\0\u02bf"+
-    "\0\224\0\u02e4\0\u0309\0\224\0\224\0\112\0\u032e\0\u0353"+
-    "\0\224\0\u0378\0\u039d\0\u03c2\0\u03e7\0\u040c\0\u0431\0\u0456"+
-    "\0\u047b\0\u04a0\0\u04c5\0\224\0\u04ea\0\u050f\0\u0534\0\u0559"+
-    "\0\u057e\0\u05a3\0\u05c8\0\u05ed\0\u0612\0\u0637\0\224\0\224"+
-    "\0\224\0\u065c\0\224\0\u0681\0\224\0\224\0\u06a6\0\u06cb"+
-    "\0\224\0\224\0\224\0\u06f0\0\u0715\0\224";
+    "\0\0\0\44\0\110\0\154\0\220\0\264\0\330\0\110"+
+    "\0\374\0\u0120\0\u0144\0\u0168\0\u018c\0\110\0\u01b0\0\110"+
+    "\0\110\0\110\0\110\0\110\0\110\0\110\0\u01d4\0\u01f8"+
+    "\0\110\0\110\0\u021c\0\u0240\0\u0264\0\u0288\0\u02ac\0\u02d0"+
+    "\0\220\0\u02f4\0\u0318\0\220\0\u033c\0\220\0\110\0\u0360"+
+    "\0\u0384\0\220\0\u03a8\0\u03cc\0\u03f0\0\u0414\0\u0438\0\u045c"+
+    "\0\u0480\0\u04a4\0\u04c8\0\u04ec\0\220\0\220\0\u0510\0\u0534"+
+    "\0\u0558\0\u057c\0\u05a0\0\u05c4\0\u05e8\0\u060c\0\u0630\0\u0654"+
+    "\0\220\0\220\0\220\0\u0678\0\220\0\u069c\0\220\0\220"+
+    "\0\u06c0\0\u06e4\0\220\0\220\0\220\0\u0708\0\u072c\0\220";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[78];
+    int [] result = new int[80];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -122,66 +122,69 @@ public class LexicalAnalyzer {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\3\1\4\1\5\1\6\1\5\1\7\1\5\1\10"+
-    "\1\11\1\12\1\5\1\13\1\5\1\14\1\15\1\16"+
-    "\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26"+
-    "\1\27\3\5\1\30\1\31\1\32\1\33\1\34\2\5"+
-    "\1\35\1\5\45\10\46\0\1\4\44\0\6\5\1\0"+
-    "\6\5\11\0\5\5\3\0\6\5\1\0\3\5\1\36"+
-    "\2\5\1\0\6\5\11\0\5\5\3\0\6\5\1\0"+
-    "\5\5\1\37\1\0\6\5\11\0\5\5\3\0\6\5"+
-    "\1\0\6\5\1\0\1\5\1\40\4\5\11\0\5\5"+
-    "\3\0\3\5\1\41\2\5\1\0\6\5\1\0\4\5"+
-    "\1\42\1\5\11\0\3\5\1\43\1\5\3\0\6\5"+
-    "\1\0\6\5\1\0\6\5\11\0\1\44\4\5\3\0"+
-    "\6\5\1\0\5\5\1\45\1\0\6\5\11\0\5\5"+
-    "\3\0\6\5\20\0\1\46\25\0\5\5\1\47\1\0"+
-    "\6\5\11\0\5\5\3\0\1\5\1\50\4\5\1\0"+
-    "\5\5\1\51\1\0\6\5\11\0\2\5\1\52\2\5"+
-    "\3\0\6\5\1\0\6\5\1\0\6\5\11\0\2\5"+
-    "\1\53\2\5\3\0\6\5\1\0\6\5\1\0\1\5"+
-    "\1\54\4\5\11\0\5\5\3\0\6\5\1\0\6\5"+
-    "\1\0\6\5\11\0\5\5\3\0\1\5\1\55\4\5"+
-    "\1\56\2\36\1\57\3\36\1\56\6\36\11\56\5\36"+
-    "\3\56\6\36\1\60\6\37\1\0\6\37\11\60\5\37"+
-    "\3\60\6\37\1\0\6\5\1\0\2\5\1\61\3\5"+
-    "\11\0\5\5\3\0\6\5\1\0\6\5\1\0\5\5"+
-    "\1\62\11\0\5\5\3\0\6\5\1\0\6\5\1\0"+
-    "\6\5\11\0\4\5\1\63\3\0\6\5\1\0\6\5"+
-    "\1\0\6\5\11\0\5\5\3\0\1\5\1\64\4\5"+
-    "\1\0\5\5\1\65\1\0\6\5\11\0\5\5\3\0"+
-    "\6\5\1\0\6\5\1\0\1\5\1\66\4\5\11\0"+
-    "\5\5\3\0\6\5\1\0\6\5\1\0\3\5\1\67"+
-    "\2\5\11\0\5\5\3\0\6\5\1\0\6\5\1\0"+
-    "\6\5\11\0\5\5\3\0\5\5\1\70\1\0\6\5"+
-    "\1\0\3\5\1\71\2\5\11\0\5\5\3\0\6\5"+
-    "\3\56\1\72\42\56\2\36\1\57\1\5\2\36\1\56"+
-    "\6\36\11\56\5\36\3\56\6\36\7\60\1\0\35\60"+
+    "\1\11\1\12\1\5\1\13\1\14\1\15\1\16\1\17"+
+    "\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27"+
+    "\1\30\3\5\1\31\1\32\1\33\1\34\2\5\1\35"+
+    "\1\5\44\10\45\0\1\4\43\0\6\5\1\0\6\5"+
+    "\11\0\5\5\2\0\6\5\1\0\3\5\1\36\2\5"+
+    "\1\0\6\5\11\0\5\5\2\0\6\5\1\0\5\5"+
+    "\1\37\1\0\6\5\11\0\5\5\2\0\6\5\1\0"+
+    "\6\5\1\0\1\5\1\40\4\5\11\0\5\5\2\0"+
+    "\3\5\1\41\2\5\1\0\6\5\1\0\4\5\1\42"+
+    "\1\5\11\0\3\5\1\43\1\5\2\0\6\5\1\0"+
+    "\6\5\1\0\6\5\11\0\1\44\4\5\2\0\6\5"+
+    "\1\0\5\5\1\45\1\0\6\5\11\0\5\5\2\0"+
+    "\6\5\1\0\5\5\1\46\1\0\6\5\11\0\5\5"+
+    "\2\0\6\5\20\0\1\47\24\0\5\5\1\50\1\0"+
+    "\6\5\11\0\5\5\2\0\1\5\1\51\4\5\1\0"+
+    "\5\5\1\52\1\0\6\5\11\0\2\5\1\53\2\5"+
+    "\2\0\6\5\1\0\6\5\1\0\6\5\11\0\2\5"+
+    "\1\54\2\5\2\0\6\5\1\0\6\5\1\0\1\5"+
+    "\1\55\4\5\11\0\5\5\2\0\6\5\1\0\6\5"+
+    "\1\0\6\5\11\0\5\5\2\0\1\5\1\56\4\5"+
+    "\1\57\2\36\1\60\3\36\1\57\6\36\11\57\5\36"+
+    "\2\57\6\36\1\61\6\37\1\0\6\37\11\61\5\37"+
+    "\2\61\6\37\1\0\6\5\1\0\2\5\1\62\3\5"+
+    "\11\0\5\5\2\0\6\5\1\0\6\5\1\0\5\5"+
+    "\1\63\11\0\5\5\2\0\6\5\1\0\6\5\1\0"+
+    "\6\5\11\0\4\5\1\64\2\0\6\5\1\0\6\5"+
+    "\1\0\6\5\11\0\1\5\1\65\3\5\2\0\6\5"+
+    "\1\0\6\5\1\0\6\5\11\0\5\5\2\0\1\5"+
+    "\1\66\4\5\1\0\5\5\1\67\1\0\6\5\11\0"+
+    "\5\5\2\0\6\5\1\0\6\5\1\0\1\5\1\70"+
+    "\4\5\11\0\5\5\2\0\6\5\1\0\6\5\1\0"+
+    "\3\5\1\71\2\5\11\0\5\5\2\0\6\5\1\0"+
+    "\6\5\1\0\6\5\11\0\5\5\2\0\5\5\1\72"+
     "\1\0\6\5\1\0\3\5\1\73\2\5\11\0\5\5"+
-    "\3\0\6\5\1\0\6\5\1\0\3\5\1\74\2\5"+
-    "\11\0\1\75\4\5\3\0\1\76\5\5\1\0\6\5"+
-    "\1\0\1\5\1\77\4\5\11\0\5\5\3\0\6\5"+
-    "\1\0\6\5\1\0\6\5\11\0\5\5\3\0\2\5"+
-    "\1\100\3\5\1\0\6\5\1\0\4\5\1\101\1\5"+
-    "\11\0\5\5\3\0\6\5\1\0\6\5\1\0\6\5"+
-    "\11\0\3\5\1\102\1\5\3\0\6\5\1\0\6\5"+
-    "\1\0\5\5\1\103\11\0\5\5\3\0\6\5\1\0"+
-    "\6\5\1\0\4\5\1\104\1\5\11\0\5\5\3\0"+
-    "\6\5\3\56\1\72\1\3\40\56\1\0\6\5\1\0"+
-    "\4\5\1\105\1\5\11\0\5\5\3\0\6\5\1\0"+
-    "\6\5\1\0\6\5\11\0\1\106\4\5\3\0\6\5"+
-    "\1\0\5\5\1\107\1\0\6\5\11\0\5\5\3\0"+
-    "\6\5\1\0\6\5\1\0\6\5\11\0\2\5\1\110"+
-    "\2\5\3\0\6\5\1\0\6\5\1\0\1\5\1\111"+
-    "\4\5\11\0\5\5\3\0\6\5\1\0\6\5\1\0"+
-    "\6\5\11\0\1\5\1\112\3\5\3\0\6\5\1\0"+
-    "\6\5\1\0\6\5\11\0\5\5\3\0\1\5\1\113"+
-    "\4\5\1\0\6\5\1\0\3\5\1\114\2\5\11\0"+
-    "\5\5\3\0\6\5\1\0\6\5\1\0\6\5\11\0"+
-    "\3\5\1\115\1\5\3\0\6\5\1\0\6\5\1\0"+
-    "\1\5\1\116\4\5\11\0\5\5\3\0\6\5";
+    "\2\0\6\5\3\57\1\74\41\57\2\36\1\60\1\5"+
+    "\2\36\1\57\6\36\11\57\5\36\2\57\6\36\7\61"+
+    "\1\0\34\61\1\0\6\5\1\0\3\5\1\75\2\5"+
+    "\11\0\5\5\2\0\6\5\1\0\6\5\1\0\3\5"+
+    "\1\76\2\5\11\0\1\77\4\5\2\0\1\100\5\5"+
+    "\1\0\6\5\1\0\1\5\1\101\4\5\11\0\5\5"+
+    "\2\0\6\5\1\0\6\5\1\0\6\5\11\0\5\5"+
+    "\2\0\2\5\1\102\3\5\1\0\6\5\1\0\4\5"+
+    "\1\103\1\5\11\0\5\5\2\0\6\5\1\0\6\5"+
+    "\1\0\6\5\11\0\3\5\1\104\1\5\2\0\6\5"+
+    "\1\0\6\5\1\0\5\5\1\105\11\0\5\5\2\0"+
+    "\6\5\1\0\6\5\1\0\4\5\1\106\1\5\11\0"+
+    "\5\5\2\0\6\5\3\57\1\74\1\3\37\57\1\0"+
+    "\6\5\1\0\4\5\1\107\1\5\11\0\5\5\2\0"+
+    "\6\5\1\0\6\5\1\0\6\5\11\0\1\110\4\5"+
+    "\2\0\6\5\1\0\5\5\1\111\1\0\6\5\11\0"+
+    "\5\5\2\0\6\5\1\0\6\5\1\0\6\5\11\0"+
+    "\2\5\1\112\2\5\2\0\6\5\1\0\6\5\1\0"+
+    "\1\5\1\113\4\5\11\0\5\5\2\0\6\5\1\0"+
+    "\6\5\1\0\6\5\11\0\1\5\1\114\3\5\2\0"+
+    "\6\5\1\0\6\5\1\0\6\5\11\0\5\5\2\0"+
+    "\1\5\1\115\4\5\1\0\6\5\1\0\3\5\1\116"+
+    "\2\5\11\0\5\5\2\0\6\5\1\0\6\5\1\0"+
+    "\6\5\11\0\3\5\1\117\1\5\2\0\6\5\1\0"+
+    "\6\5\1\0\1\5\1\120\4\5\11\0\5\5\2\0"+
+    "\6\5";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1850];
+    int [] result = new int[1872];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -219,12 +222,12 @@ public class LexicalAnalyzer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\1\11\4\1\1\11\4\1\1\11\1\1\7\11"+
-    "\2\1\3\11\13\1\1\11\7\1\1\0\13\1\1\0"+
+    "\2\0\1\11\4\1\1\11\5\1\1\11\1\1\7\11"+
+    "\2\1\2\11\14\1\1\11\7\1\1\0\14\1\1\0"+
     "\24\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[78];
+    int [] result = new int[80];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -323,7 +326,7 @@ public class LexicalAnalyzer {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 150) {
+    while (i < 146) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -546,7 +549,7 @@ public class LexicalAnalyzer {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public Symbol yylex() throws java.io.IOException {
+  public Symbol nextToken() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
@@ -761,53 +764,53 @@ public class LexicalAnalyzer {
             // fall through
           case 44: break;
           case 13: 
-            { System.out.println("NOT: " + yytext());return new Symbol(LexicalUnit.NOT, yyline, yycolumn);
+            { System.out.println("GREATER: "+ yytext()); return new Symbol(LexicalUnit.GREATER, yyline, yycolumn);
             } 
             // fall through
           case 45: break;
           case 14: 
-            { System.out.println("GREATER: "+ yytext()); return new Symbol(LexicalUnit.GREATER, yyline, yycolumn);
+            { System.out.println("SMALLER: "+ yytext()); return new Symbol(LexicalUnit.SMALLER, yyline, yycolumn);
             } 
             // fall through
           case 46: break;
           case 15: 
-            { System.out.println("SMALLER: "+ yytext()); return new Symbol(LexicalUnit.SMALLER, yyline, yycolumn);
-            } 
-            // fall through
-          case 47: break;
-          case 16: 
             { Symbol retSymbol = new Symbol(LexicalUnit.BY,yyline,yycolumn,yytext());
           System.out.println(retSymbol);
           return retSymbol;
             } 
             // fall through
-          case 48: break;
-          case 17: 
+          case 47: break;
+          case 16: 
             { System.out.println("IF: "+ yytext()); return new Symbol(LexicalUnit.IF, yyline, yycolumn);
             } 
             // fall through
-          case 49: break;
-          case 18: 
+          case 48: break;
+          case 17: 
             { Symbol retSymbol = new Symbol(LexicalUnit.DO,yyline,yycolumn,yytext());
           System.out.println(retSymbol);
           return retSymbol;
             } 
             // fall through
-          case 50: break;
-          case 19: 
+          case 49: break;
+          case 18: 
             { System.out.println("ASSIGN: "+ yytext()); return new Symbol(LexicalUnit.ASSIGN, yyline, yycolumn,yytext());
             } 
             // fall through
-          case 51: break;
-          case 20: 
+          case 50: break;
+          case 19: 
             { Symbol retSymbol = new Symbol(LexicalUnit.TO,yyline,yycolumn,yytext());
           System.out.println(retSymbol);
           return retSymbol;
             } 
             // fall through
+          case 51: break;
+          case 20: 
+            { System.out.println("END: "+ yytext()); return new Symbol(LexicalUnit.END, yyline, yycolumn,yytext());
+            } 
+            // fall through
           case 52: break;
           case 21: 
-            { System.out.println("END: "+ yytext()); return new Symbol(LexicalUnit.END, yyline, yycolumn,yytext());
+            { System.out.println("NOT: " + yytext());return new Symbol(LexicalUnit.NOT, yyline, yycolumn);
             } 
             // fall through
           case 53: break;
@@ -919,7 +922,7 @@ public class LexicalAnalyzer {
           java.io.FileInputStream stream = new java.io.FileInputStream(argv[i]);
           java.io.Reader reader = new java.io.InputStreamReader(stream, encodingName);
           scanner = new LexicalAnalyzer(reader);
-          while ( !scanner.zzAtEOF ) scanner.yylex();
+          while ( !scanner.zzAtEOF ) scanner.nextToken();
         }
         catch (java.io.FileNotFoundException e) {
           System.out.println("File not found : \""+argv[i]+"\"");

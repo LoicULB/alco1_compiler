@@ -7,9 +7,25 @@
 %standalone //JFlex does not need a parser
 %type Symbol 
 %public
+%function nextToken
 %xstate YYINITIAL, DECIMAL_SN, C99_VAR, REL_OPE, CONDITION_STATEMENT
 %{ //start the java code
-    
+    private java.util.HashMap<String, Integer> symbolTable = new HashMap<>();
+        private Vector<Symbol> symbols = new Vector<>();
+
+        public java.util.HashMap<String, Integer> getSymbolTable(){
+            return this.symbolTable;
+        }
+
+        public java.util.Vector<Symbol> getSymbols(){
+            return this.symbols;
+        }
+
+        private void addToSymbols(LexicalUnit lexicalUnit){
+            Symbol symbol = new Symbol(lexicalUnit, yyline, yycolumn, yytext());
+        }
+
+        //todo deal with all the shits :)
 %}
 %eofval{
 	return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
@@ -36,7 +52,7 @@ BigCom = "CO"~"CO"
 SmallCom = "co".*
 
 %% //identification of tokens
-    "begin" {System.out.println("BEGIN: "+ yytext()); return new Symbol(LexicalUnit.BEG, yyline, yycolumn,yytext());}
+    "begin" {System.out.println("BEGIN: "+ yytext()); return new Symbol(LexicalUnit.BEG, yyline, yycolumn,yytext());} //todo sout to remove
     "end" {System.out.println("END: "+ yytext()); return new Symbol(LexicalUnit.END, yyline, yycolumn,yytext());}
 
     ";" {System.out.println("SEMICOLON: "+ yytext()); return new Symbol(LexicalUnit.SEMICOLON, yyline, yycolumn);}
@@ -83,7 +99,7 @@ SmallCom = "co".*
     "else" {System.out.println("ELSE: "+ yytext()); return new Symbol(LexicalUnit.ELSE, yyline, yycolumn);}
 
     //Comparaison operators
-    "!" {System.out.println("NOT: " + yytext());return new Symbol(LexicalUnit.NOT, yyline, yycolumn);}
+    "not" {System.out.println("NOT: " + yytext());return new Symbol(LexicalUnit.NOT, yyline, yycolumn);}
     "=" {System.out.println("EQUAL: "+ yytext()); return new Symbol(LexicalUnit.EQUAL, yyline, yycolumn);}
     ">" {System.out.println("GREATER: "+ yytext()); return new Symbol(LexicalUnit.GREATER, yyline, yycolumn);}
     "<" {System.out.println("SMALLER: "+ yytext()); return new Symbol(LexicalUnit.SMALLER, yyline, yycolumn);}
