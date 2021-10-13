@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Vector;
 %% //Options of the scanner
 
 %class LexicalAnalyzer //Name
@@ -10,25 +15,41 @@
 %function nextToken
 %xstate YYINITIAL, DECIMAL_SN, C99_VAR, REL_OPE, CONDITION_STATEMENT
 %{ //start the java code
-    private java.util.HashMap<String, Integer> symbolTable = new HashMap<>();
+
+
+    private java.util.Map<String, Integer> symbolTable = new TreeMap<>();
         private Vector<Symbol> symbols = new Vector<>();
 
-        public java.util.HashMap<String, Integer> getSymbolTable(){
-            return this.symbolTable;
-        }
+            public java.util.Map<String, Integer> getSymbolTable(){
+                return this.symbolTable;
+            }
 
-        public java.util.Vector<Symbol> getSymbols(){
-            return this.symbols;
-        }
+            public java.util.Vector<Symbol> getSymbols(){
+                return this.symbols;
+            }
 
-        private void addToSymbols(LexicalUnit lexicalUnit){
-            Symbol symbol = new Symbol(lexicalUnit, yyline, yycolumn, yytext());
-        }
+            private Symbol addToSymbolsStructures(LexicalUnit lexicalUnit){
+                Symbol symbol = new Symbol(lexicalUnit, yyline, yycolumn, yytext());
+                if (symbol.getType() == LexicalUnit.VARNAME) {
+                    symbolTable.compute(symbol.getValue().toString(), (k, v) -> (v == null) ? 1 : v + 1);
+                }
+                symbols.add(symbol);
+                return symbol;
 
-        //todo deal with all the shits :)
+            }
+
+            private Symbol endOfFile(){
+                Symbol symbol = new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
+                symbols.add(symbol);
+                return symbol;
+            }
+
+
+
 %}
 %eofval{
-	return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
+	return endOfFile();
+    //return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
 %eofval}
 %eof{
 
@@ -52,115 +73,51 @@ BigCom = "CO"~"CO"
 SmallCom = "co".*
 
 %% //identification of tokens
-    "begin" {System.out.println("BEGIN: "+ yytext()); return new Symbol(LexicalUnit.BEG, yyline, yycolumn,yytext());} //todo sout to remove
-    "end" {System.out.println("END: "+ yytext()); return new Symbol(LexicalUnit.END, yyline, yycolumn,yytext());}
+    "begin" { addToSymbolsStructures(LexicalUnit.BEG);}
+    "end" { addToSymbolsStructures(LexicalUnit.END);}
 
-    ";" {System.out.println("SEMICOLON: "+ yytext()); return new Symbol(LexicalUnit.SEMICOLON, yyline, yycolumn);}
-    ":=" {System.out.println("ASSIGN: "+ yytext()); return new Symbol(LexicalUnit.ASSIGN, yyline, yycolumn,yytext());}
+    ";" { addToSymbolsStructures(LexicalUnit.SEMICOLON);}
+    ":=" { addToSymbolsStructures(LexicalUnit.ASSIGN);}
 
-    "(" {
-          Symbol retSymbol = new Symbol(LexicalUnit.LPAREN,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    ")" {
-          Symbol retSymbol = new Symbol(LexicalUnit.RPAREN,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
+    "(" { addToSymbolsStructures(LexicalUnit.LPAREN);}
+    ")" { addToSymbolsStructures(LexicalUnit.RPAREN);}
 
     //Arithmetic Operators
-    "-" {
-          Symbol retSymbol = new Symbol(LexicalUnit.MINUS,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "+" {
-          Symbol retSymbol = new Symbol(LexicalUnit.PLUS,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "*" {
-          Symbol retSymbol = new Symbol(LexicalUnit.TIMES,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "/" {
-          Symbol retSymbol = new Symbol(LexicalUnit.DIVIDE,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
+    "-" { addToSymbolsStructures(LexicalUnit.MINUS);}
+    "+" { addToSymbolsStructures(LexicalUnit.PLUS);}
+    "*" { addToSymbolsStructures(LexicalUnit.TIMES);}
+    "/" { addToSymbolsStructures(LexicalUnit.DIVIDE);}
 
     
     //If
-    "if" {System.out.println("IF: "+ yytext()); return new Symbol(LexicalUnit.IF, yyline, yycolumn);}
-    "then" {System.out.println("THEN: "+ yytext()); return new Symbol(LexicalUnit.THEN, yyline, yycolumn);}
-    "endif" {System.out.println("ENDIF: "+ yytext()); return new Symbol(LexicalUnit.ENDIF, yyline, yycolumn);}
-    "else" {System.out.println("ELSE: "+ yytext()); return new Symbol(LexicalUnit.ELSE, yyline, yycolumn);}
+    "if" { addToSymbolsStructures(LexicalUnit.IF);}
+    "then" { addToSymbolsStructures(LexicalUnit.THEN);}
+    "endif" { addToSymbolsStructures(LexicalUnit.ENDIF);}
+    "else" { addToSymbolsStructures(LexicalUnit.ELSE);}
 
     //Comparaison operators
-    "not" {System.out.println("NOT: " + yytext());return new Symbol(LexicalUnit.NOT, yyline, yycolumn);}
-    "=" {System.out.println("EQUAL: "+ yytext()); return new Symbol(LexicalUnit.EQUAL, yyline, yycolumn);}
-    ">" {System.out.println("GREATER: "+ yytext()); return new Symbol(LexicalUnit.GREATER, yyline, yycolumn);}
-    "<" {System.out.println("SMALLER: "+ yytext()); return new Symbol(LexicalUnit.SMALLER, yyline, yycolumn);}
+    "not" { addToSymbolsStructures(LexicalUnit.NOT);}
+    "=" { addToSymbolsStructures(LexicalUnit.EQUAL);}
+    ">" { addToSymbolsStructures(LexicalUnit.GREATER);}
+    "<" { addToSymbolsStructures(LexicalUnit.SMALLER);}
 
     //While
-    "while" {
-          Symbol retSymbol = new Symbol(LexicalUnit.WHILE,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "do" {
-          Symbol retSymbol = new Symbol(LexicalUnit.DO,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "endwhile" {
-          Symbol retSymbol = new Symbol(LexicalUnit.ENDWHILE,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
+    "while" { addToSymbolsStructures(LexicalUnit.WHILE);}
+    "do" { addToSymbolsStructures(LexicalUnit.DO);}
+    "endwhile" { addToSymbolsStructures(LexicalUnit.ENDWHILE);}
 
     //For
-    "for"  {
-          Symbol retSymbol = new Symbol(LexicalUnit.FOR,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "from" {
-          Symbol retSymbol = new Symbol(LexicalUnit.FROM,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "by" {
-          Symbol retSymbol = new Symbol(LexicalUnit.BY,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "to" {
-          Symbol retSymbol = new Symbol(LexicalUnit.TO,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "endfor" {
-          Symbol retSymbol = new Symbol(LexicalUnit.ENDFOR,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
+    "for"  { addToSymbolsStructures(LexicalUnit.FOR);}
+    "from" { addToSymbolsStructures(LexicalUnit.FROM);}
+    "by" { addToSymbolsStructures(LexicalUnit.BY);}
+    "to" { addToSymbolsStructures(LexicalUnit.TO);}
+    "endfor" { addToSymbolsStructures(LexicalUnit.ENDFOR);}
 
     //IO
-    "print" {
-          Symbol retSymbol = new Symbol(LexicalUnit.PRINT,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-    "read" {
-          Symbol retSymbol = new Symbol(LexicalUnit.READ,yyline,yycolumn,yytext());
-          System.out.println(retSymbol);
-          return retSymbol;
-      }
-   {VarName} {System.out.println("VARNAME: "+ yytext()); return new Symbol(LexicalUnit.VARNAME, yyline, yycolumn,yytext());}
-   {Number} {System.out.println("NUMBER: "+ yytext()); return new Symbol(LexicalUnit.NUMBER, yyline, yycolumn,yytext());}
+    "print" { addToSymbolsStructures(LexicalUnit.PRINT);}
+    "read" { addToSymbolsStructures(LexicalUnit.READ);}
+   {VarName} { addToSymbolsStructures(LexicalUnit.VARNAME);}
+   {Number} { addToSymbolsStructures(LexicalUnit.NUMBER);}
 
    {BigCom} {}
    {SmallCom} {}
