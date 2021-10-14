@@ -12,27 +12,58 @@ public class Main {
             LexicalAnalyzer myAnalyzer = new LexicalAnalyzer(reader);
 
             Symbol token;
-            do {
-                token = myAnalyzer.nextToken();
+            readSourceCode(myAnalyzer);
 
-            }
-            while (token.getType() != LexicalUnit.END_OF_STREAM);
-
-            System.out.println("My symbol table");
-            printSymbolTable(myAnalyzer.getSymbolTable());
-            System.out.println("List of Lexical Unit");
-            printSymbolsVector(myAnalyzer.getSymbols());
+            printDataStructures(myAnalyzer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Print the data structures contained in the lexical analyser
+     * @param myAnalyzer : the scanner used to apply the lexicographic analysis
+     */
+    private static void printDataStructures(LexicalAnalyzer myAnalyzer) {
+        System.out.println("My symbol table");
+        printSymbolTable(myAnalyzer.getSymbolTable());
+        System.out.println("List of Lexical Unit");
+        printSymbolsVector(myAnalyzer.getSymbols());
+    }
+
+    /**
+     * Reads the source code and apply the nextToken function that will add the token encountered to the symbol
+     * datastructures if needed.
+     * @param myAnalyzer : The scnanner used to apply the lexicographic analysis
+     * @throws IOException : if nextToken() has a problem with the file.
+     */
+    private static void readSourceCode(LexicalAnalyzer myAnalyzer) throws IOException {
+        Symbol token;
+        do {
+            token = myAnalyzer.nextToken();
+
+        }
+        while (token.getType() != LexicalUnit.END_OF_STREAM);
+    }
+
+
+    /**
+     * Print the symbol table
+     * @param symbolTable : the symbol table to print
+     */
+
     private static void printSymbolTable(Map<String, Integer> symbolTable){
         symbolTable.entrySet().forEach(System.out::println);
     }
 
+    /**
+     * Print the vector of symbols
+     * @param symbols : the vector of symbols
+     */
     private static void printSymbolsVector(Vector<Symbol> symbols){
+
         symbols.forEach(System.out::println);
+
     }
 
 }

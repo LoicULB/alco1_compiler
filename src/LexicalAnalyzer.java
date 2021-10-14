@@ -311,8 +311,8 @@ public class LexicalAnalyzer {
   /* user code: */
 
 
-    private java.util.Map<String, Integer> symbolTable = new TreeMap<>();
-        private Vector<Symbol> symbols = new Vector<>();
+            private java.util.Map<String, Integer> symbolTable = new TreeMap<>();
+            private Vector<Symbol> symbols = new Vector<>();
 
             public java.util.Map<String, Integer> getSymbolTable(){
                 return this.symbolTable;
@@ -322,6 +322,13 @@ public class LexicalAnalyzer {
                 return this.symbols;
             }
 
+            /**
+            * Creates a symbol corresponding to the token that we met, then adds it to the symbol
+            * table if needed. And in all cases to the vector of symbols.
+            *
+            * @param lexicalUnit : The lexical type of the token that we met.
+            * @return the symbol created.
+            */
             private Symbol addToSymbolsStructures(LexicalUnit lexicalUnit){
                 Symbol symbol = new Symbol(lexicalUnit, yyline, yycolumn, yytext());
                 if (symbol.getType() == LexicalUnit.VARNAME) {
@@ -332,6 +339,10 @@ public class LexicalAnalyzer {
 
             }
 
+            /**
+            * Handle the end of file
+            * @return the symbol corresponding to the END OF FILE
+            */
             private Symbol endOfFile(){
                 Symbol symbol = new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
                 symbols.add(symbol);
