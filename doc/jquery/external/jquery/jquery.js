@@ -4036,7 +4036,7 @@ jQuery.extend( {
 
 // These usually indicate a programmer mistake during development,
 // warn about them ASAP rather than swallowing them by default.
-var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;
+var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)errors$/;
 
 jQuery.Deferred.exceptionHook = function( error, stack ) {
 
@@ -9781,7 +9781,7 @@ jQuery.extend( {
 			jqXHR.status = status;
 			jqXHR.statusText = ( nativeStatusText || statusText ) + "";
 
-			// Success/Error
+			// Success/errors
 			if ( isSuccess ) {
 				deferred.resolveWith( callbackContext, [ success, statusText, jqXHR ] );
 			} else {

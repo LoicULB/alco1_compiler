@@ -1,8 +1,7 @@
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.TreeMap;
 import java.util.Vector;
+import errors.UnexpectedTokenException;
 %% //Options of the scanner
 
 %class LexicalAnalyzer //Name
@@ -13,7 +12,6 @@ import java.util.Vector;
 %type Symbol 
 %public
 %function nextToken
-%xstate YYINITIAL, DECIMAL_SN, C99_VAR, REL_OPE, CONDITION_STATEMENT
 %{ //start the java code
 
 
@@ -55,8 +53,6 @@ import java.util.Vector;
                 return symbol;
             }
 
-
-
 %}
 %eofval{
 	return endOfFile();
@@ -71,6 +67,9 @@ import java.util.Vector;
 //Extended RegEx
 //whitespace = [\t\n]+
 
+LineTerminator  = \n | \r |\r\n
+WordTerminator = ({LineTerminator} | " ")
+
 Digit = [0-9]
 
 AlphaLower = [a-z]
@@ -78,8 +77,9 @@ AlphaUpper = [A-Z]
 Alpha = {AlphaLower} | {AlphaUpper}
 AlphaNum = {Alpha} | {Digit}
 
-VarName = {Alpha} {AlphaNum}*
-Number = {Digit}+
+
+VarName = ({Alpha} {AlphaNum}*)
+Number = ({Digit}+)
 BigCom = "CO"~"CO"
 SmallCom = "co".*
 
@@ -127,9 +127,11 @@ SmallCom = "co".*
     //IO
     "print" { addToSymbolsStructures(LexicalUnit.PRINT);}
     "read" { addToSymbolsStructures(LexicalUnit.READ);}
-   {VarName} { addToSymbolsStructures(LexicalUnit.VARNAME);}
-   {Number} { addToSymbolsStructures(LexicalUnit.NUMBER);}
+    {Number} { addToSymbolsStructures(LexicalUnit.NUMBER);}
+    {VarName} { addToSymbolsStructures(LexicalUnit.VARNAME);}
+
 
    {BigCom} {}
    {SmallCom} {}
-   . {}
+
+   [^\r \n \r\n' '] {throw new UnexpectedTokenException(yytext(),yyline+1);}
