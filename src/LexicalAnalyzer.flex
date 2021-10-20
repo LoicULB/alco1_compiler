@@ -8,7 +8,7 @@ import errors.UnexpectedTokenException;
 %unicode
 %line  //Use line counter (yyline variable)
 %column // Use column counter (yycolumn variable)
-%standalone //JFlex does not need a parser
+//%standalone //JFlex does not need a parser
 %type Symbol 
 %public
 %function nextToken
@@ -134,4 +134,5 @@ SmallCom = "co".*
    {BigCom} {}
    {SmallCom} {}
 
+   [\r \n \r\n' ']  {}
    [^\r \n \r\n' '] {throw new UnexpectedTokenException(yytext(),yyline+1);}

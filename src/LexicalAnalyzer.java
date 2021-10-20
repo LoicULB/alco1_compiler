@@ -56,13 +56,13 @@ public class LexicalAnalyzer {
     "\1\0\1\1\1\2\1\3\10\4\1\5\1\1\1\6"+
     "\1\7\1\10\1\11\1\12\1\13\1\14\2\4\1\15"+
     "\1\16\6\4\1\17\2\4\1\20\1\4\1\21\1\22"+
-    "\2\4\1\23\4\4\1\0\1\4\1\24\1\4\1\25"+
-    "\1\4\1\26\1\27\5\4\1\0\4\4\1\30\1\31"+
-    "\1\32\1\4\1\33\1\4\1\24\1\34\1\35\2\4"+
-    "\1\36\1\37\1\40\2\4\1\41";
+    "\2\4\1\23\4\4\1\0\1\4\1\2\1\4\1\24"+
+    "\1\4\1\25\1\26\5\4\1\0\4\4\1\27\1\30"+
+    "\1\31\1\4\1\32\1\4\1\33\1\34\2\4\1\35"+
+    "\1\36\1\37\2\4\1\40";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[80];
+    int [] result = new int[79];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -95,11 +95,11 @@ public class LexicalAnalyzer {
     "\0\162\0\u03b6\0\u03dc\0\u0402\0\u0428\0\u044e\0\u0474\0\u049a"+
     "\0\u04c0\0\u04e6\0\u050c\0\162\0\162\0\u0532\0\u0558\0\u057e"+
     "\0\u05a4\0\u05ca\0\u05f0\0\u0616\0\u063c\0\u0662\0\u0688\0\162"+
-    "\0\162\0\162\0\u06ae\0\162\0\u06d4\0\46\0\162\0\162"+
-    "\0\u06fa\0\u0720\0\162\0\162\0\162\0\u0746\0\u076c\0\162";
+    "\0\162\0\162\0\u06ae\0\162\0\u06d4\0\162\0\162\0\u06fa"+
+    "\0\u0720\0\162\0\162\0\162\0\u0746\0\u076c\0\162";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[80];
+    int [] result = new int[79];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -170,18 +170,18 @@ public class LexicalAnalyzer {
     "\1\103\1\5\2\0\6\5\3\0\6\5\1\0\5\5"+
     "\1\104\11\0\5\5\2\0\6\5\3\0\6\5\1\0"+
     "\4\5\1\105\1\5\11\0\5\5\2\0\6\5\5\56"+
-    "\1\73\1\106\37\56\3\0\6\5\1\0\4\5\1\107"+
+    "\1\73\1\3\37\56\3\0\6\5\1\0\4\5\1\106"+
     "\1\5\11\0\5\5\2\0\6\5\3\0\6\5\1\0"+
-    "\6\5\11\0\1\110\4\5\2\0\6\5\3\0\5\5"+
-    "\1\111\1\0\6\5\11\0\5\5\2\0\6\5\3\0"+
-    "\6\5\1\0\6\5\11\0\2\5\1\112\2\5\2\0"+
-    "\6\5\3\0\6\5\1\0\1\5\1\113\4\5\11\0"+
+    "\6\5\11\0\1\107\4\5\2\0\6\5\3\0\5\5"+
+    "\1\110\1\0\6\5\11\0\5\5\2\0\6\5\3\0"+
+    "\6\5\1\0\6\5\11\0\2\5\1\111\2\5\2\0"+
+    "\6\5\3\0\6\5\1\0\1\5\1\112\4\5\11\0"+
     "\5\5\2\0\6\5\3\0\6\5\1\0\6\5\11\0"+
-    "\1\5\1\114\3\5\2\0\6\5\3\0\6\5\1\0"+
-    "\6\5\11\0\5\5\2\0\1\5\1\115\4\5\3\0"+
-    "\6\5\1\0\3\5\1\116\2\5\11\0\5\5\2\0"+
-    "\6\5\3\0\6\5\1\0\6\5\11\0\3\5\1\117"+
-    "\1\5\2\0\6\5\3\0\6\5\1\0\1\5\1\120"+
+    "\1\5\1\113\3\5\2\0\6\5\3\0\6\5\1\0"+
+    "\6\5\11\0\5\5\2\0\1\5\1\114\4\5\3\0"+
+    "\6\5\1\0\3\5\1\115\2\5\11\0\5\5\2\0"+
+    "\6\5\3\0\6\5\1\0\6\5\11\0\3\5\1\116"+
+    "\1\5\2\0\6\5\3\0\6\5\1\0\1\5\1\117"+
     "\4\5\11\0\5\5\2\0\6\5";
 
   private static int [] zzUnpackTrans() {
@@ -224,11 +224,10 @@ public class LexicalAnalyzer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\2\11\11\1\1\11\1\1\7\11\2\1\2\11"+
-    "\14\1\1\11\7\1\1\0\14\1\1\0\12\1\1\11"+
-    "\12\1";
+    "\14\1\1\11\7\1\1\0\14\1\1\0\24\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[80];
+    int [] result = new int[79];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -736,218 +735,164 @@ public class LexicalAnalyzer {
             { throw new UnexpectedTokenException(yytext(),yyline+1);
             } 
             // fall through
-          case 34: break;
+          case 33: break;
           case 2: 
-            { System.out.print(yytext());
+            { 
             } 
             // fall through
-          case 35: break;
+          case 34: break;
           case 3: 
             { addToSymbolsStructures(LexicalUnit.NUMBER);
             } 
             // fall through
-          case 36: break;
+          case 35: break;
           case 4: 
             { addToSymbolsStructures(LexicalUnit.VARNAME);
             } 
             // fall through
-          case 37: break;
+          case 36: break;
           case 5: 
             { addToSymbolsStructures(LexicalUnit.SEMICOLON);
             } 
             // fall through
-          case 38: break;
+          case 37: break;
           case 6: 
             { addToSymbolsStructures(LexicalUnit.EQUAL);
             } 
             // fall through
-          case 39: break;
+          case 38: break;
           case 7: 
             { addToSymbolsStructures(LexicalUnit.LPAREN);
             } 
             // fall through
-          case 40: break;
+          case 39: break;
           case 8: 
             { addToSymbolsStructures(LexicalUnit.RPAREN);
             } 
             // fall through
-          case 41: break;
+          case 40: break;
           case 9: 
             { addToSymbolsStructures(LexicalUnit.MINUS);
             } 
             // fall through
-          case 42: break;
+          case 41: break;
           case 10: 
             { addToSymbolsStructures(LexicalUnit.PLUS);
             } 
             // fall through
-          case 43: break;
+          case 42: break;
           case 11: 
             { addToSymbolsStructures(LexicalUnit.TIMES);
             } 
             // fall through
-          case 44: break;
+          case 43: break;
           case 12: 
             { addToSymbolsStructures(LexicalUnit.DIVIDE);
             } 
             // fall through
-          case 45: break;
+          case 44: break;
           case 13: 
             { addToSymbolsStructures(LexicalUnit.GREATER);
             } 
             // fall through
-          case 46: break;
+          case 45: break;
           case 14: 
             { addToSymbolsStructures(LexicalUnit.SMALLER);
             } 
             // fall through
-          case 47: break;
+          case 46: break;
           case 15: 
             { addToSymbolsStructures(LexicalUnit.BY);
             } 
             // fall through
-          case 48: break;
+          case 47: break;
           case 16: 
             { addToSymbolsStructures(LexicalUnit.IF);
             } 
             // fall through
-          case 49: break;
+          case 48: break;
           case 17: 
             { addToSymbolsStructures(LexicalUnit.DO);
             } 
             // fall through
-          case 50: break;
+          case 49: break;
           case 18: 
             { addToSymbolsStructures(LexicalUnit.ASSIGN);
             } 
             // fall through
-          case 51: break;
+          case 50: break;
           case 19: 
             { addToSymbolsStructures(LexicalUnit.TO);
             } 
             // fall through
-          case 52: break;
+          case 51: break;
           case 20: 
-            { 
-            } 
-            // fall through
-          case 53: break;
-          case 21: 
             { addToSymbolsStructures(LexicalUnit.END);
             } 
             // fall through
-          case 54: break;
-          case 22: 
+          case 52: break;
+          case 21: 
             { addToSymbolsStructures(LexicalUnit.NOT);
             } 
             // fall through
-          case 55: break;
-          case 23: 
+          case 53: break;
+          case 22: 
             { addToSymbolsStructures(LexicalUnit.FOR);
             } 
             // fall through
-          case 56: break;
-          case 24: 
+          case 54: break;
+          case 23: 
             { addToSymbolsStructures(LexicalUnit.ELSE);
             } 
             // fall through
-          case 57: break;
-          case 25: 
+          case 55: break;
+          case 24: 
             { addToSymbolsStructures(LexicalUnit.FROM);
             } 
             // fall through
-          case 58: break;
-          case 26: 
+          case 56: break;
+          case 25: 
             { addToSymbolsStructures(LexicalUnit.THEN);
             } 
             // fall through
-          case 59: break;
-          case 27: 
+          case 57: break;
+          case 26: 
             { addToSymbolsStructures(LexicalUnit.READ);
             } 
             // fall through
-          case 60: break;
-          case 28: 
+          case 58: break;
+          case 27: 
             { addToSymbolsStructures(LexicalUnit.BEG);
             } 
             // fall through
-          case 61: break;
-          case 29: 
+          case 59: break;
+          case 28: 
             { addToSymbolsStructures(LexicalUnit.ENDIF);
             } 
             // fall through
-          case 62: break;
-          case 30: 
+          case 60: break;
+          case 29: 
             { addToSymbolsStructures(LexicalUnit.WHILE);
             } 
             // fall through
-          case 63: break;
-          case 31: 
+          case 61: break;
+          case 30: 
             { addToSymbolsStructures(LexicalUnit.PRINT);
             } 
             // fall through
-          case 64: break;
-          case 32: 
+          case 62: break;
+          case 31: 
             { addToSymbolsStructures(LexicalUnit.ENDFOR);
             } 
             // fall through
-          case 65: break;
-          case 33: 
+          case 63: break;
+          case 32: 
             { addToSymbolsStructures(LexicalUnit.ENDWHILE);
             } 
             // fall through
-          case 66: break;
+          case 64: break;
           default:
             zzScanError(ZZ_NO_MATCH);
-        }
-      }
-    }
-  }
-
-  /**
-   * Runs the scanner on input files.
-   *
-   * This is a standalone scanner, it will print any unmatched
-   * text to System.out unchanged.
-   *
-   * @param argv   the command line, contains the filenames to run
-   *               the scanner on.
-   */
-  public static void main(String argv[]) {
-    if (argv.length == 0) {
-      System.out.println("Usage : java LexicalAnalyzer [ --encoding <name> ] <inputfile(s)>");
-    }
-    else {
-      int firstFilePos = 0;
-      String encodingName = "UTF-8";
-      if (argv[0].equals("--encoding")) {
-        firstFilePos = 2;
-        encodingName = argv[1];
-        try {
-          java.nio.charset.Charset.forName(encodingName); // Side-effect: is encodingName valid? 
-        } catch (Exception e) {
-          System.out.println("Invalid encoding '" + encodingName + "'");
-          return;
-        }
-      }
-      for (int i = firstFilePos; i < argv.length; i++) {
-        LexicalAnalyzer scanner = null;
-        try {
-          java.io.FileInputStream stream = new java.io.FileInputStream(argv[i]);
-          java.io.Reader reader = new java.io.InputStreamReader(stream, encodingName);
-          scanner = new LexicalAnalyzer(reader);
-          while ( !scanner.zzAtEOF ) scanner.nextToken();
-        }
-        catch (java.io.FileNotFoundException e) {
-          System.out.println("File not found : \""+argv[i]+"\"");
-        }
-        catch (java.io.IOException e) {
-          System.out.println("IO error scanning file \""+argv[i]+"\"");
-          System.out.println(e);
-        }
-        catch (Exception e) {
-          System.out.println("Unexpected exception:");
-          e.printStackTrace();
         }
       }
     }
