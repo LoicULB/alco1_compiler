@@ -25,10 +25,9 @@ public class Main {
      * @param myAnalyzer : the scanner used to apply the lexicographic analysis
      */
     private static void printDataStructures(LexicalAnalyzer myAnalyzer) {
-        System.out.println("My symbol table");
-        printSymbolTable(myAnalyzer.getSymbolTable());
-        System.out.println("List of Lexical Unit");
         printSymbolsVector(myAnalyzer.getSymbols());
+        System.out.println("Variables");
+        printSymbolTable(myAnalyzer.getSymbolTable());
     }
 
     /**

@@ -36,7 +36,7 @@ import errors.UnexpectedTokenException;
             private Symbol addToSymbolsStructures(LexicalUnit lexicalUnit){
                 Symbol symbol = new Symbol(lexicalUnit, yyline, yycolumn, yytext());
                 if (symbol.getType() == LexicalUnit.VARNAME) {
-                    symbolTable.compute(symbol.getValue().toString(), (k, v) -> (v == null) ? 1 : v + 1);
+                    symbolTable.putIfAbsent(symbol.getValue().toString(),yyline+1);
                 }
                 symbols.add(symbol);
                 return symbol;
